@@ -1,3 +1,5 @@
+import java.util.*
+
 class KotlinCustomStack {
     fun push(x: Int) {
         throw NotImplementedError("Not supported yet.")
@@ -11,11 +13,15 @@ class KotlinCustomStack {
         throw NotImplementedError("Not supported yet.")
     }
 
+    fun size(): Int {
+        return 3
+    }
+
     fun insert(position: Int, item: Int) {
         throw NotImplementedError("Not supported yet.")
     }
 
-    fun size(): Int {
-        return 3
+    fun asQueue() : IntArray {
+        throw NotImplementedError("Not supported yet.")
     }
 }

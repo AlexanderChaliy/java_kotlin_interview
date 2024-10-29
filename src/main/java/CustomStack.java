@@ -11,11 +11,15 @@ public class CustomStack {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public int size(){
+        return 3;
+    }
+
     public void insert(int position, int item){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int size(){
-        return 3;
+    public int[] asQueue(){
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

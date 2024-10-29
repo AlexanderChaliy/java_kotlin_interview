@@ -14,14 +14,13 @@ public class CustomStackUsages {
         stack.push(2);
         stack.push(4);
 
-//        //ToDo: uncomment and add signature for asQueue
-//        int[] queue = stack.asQueue();
-//        int breakingPointIndex = Helpers.getBreakingPoint(queue);
-//        if (breakingPointIndex != -1) {
-//            System.out.println("Breaking point found at index " + breakingPointIndex +
-//                    ", value: " + queue[breakingPointIndex]);
-//        } else {
-//            System.out.println("No breaking point found.");
-//        }
+        int[] queue = stack.asQueue();
+        int breakingPointIndex = Helpers.getBreakingPoint(queue);
+        if (breakingPointIndex != -1) {
+            System.out.println("Breaking point found at index " + breakingPointIndex +
+                    ", value: " + queue[breakingPointIndex]);
+        } else {
+            System.out.println("No breaking point found.");
+        }
     }
 }
