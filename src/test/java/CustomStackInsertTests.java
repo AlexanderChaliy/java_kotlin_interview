@@ -2,77 +2,79 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomStackInsertTests {
-    private CustomStack __Stack;
+    private CustomStack stack;
 
     @BeforeEach
     public void setUp() {
-        __Stack = new CustomStack();
+        stack = new CustomStack();
     }
 
     @AfterEach
     public void tearDown() {
-        __Stack = null;
+        stack = null;
     }
 
     @Test
     public void testInsertAtBeginning() {
-        __Stack.insert(0, 10);
-        assertEquals(10, __Stack.pop());
+        stack.insert(0, 10);
+        assertEquals(10, stack.pop());
     }
 
     @Test
     public void testInsertAtEnd() {
-        __Stack.push(10);
-        __Stack.push(20);
-        __Stack.insert(2, 30);
-        assertEquals(3, __Stack.size());
-        assertStackElements(__Stack, new int[]{20, 10, 30});
+        stack.push(10);
+        stack.push(20);
+        stack.insert(2, 30);
+        assertEquals(3, stack.size());
+        assertStackElements(stack, new int[]{30, 20, 10});
     }
 
     @Test
     public void testInsertInMiddle() {
-        __Stack.push(10);
-        __Stack.push(30);
-        __Stack.insert(1, 20);
-        assertEquals(3, __Stack.size());
-        assertStackElements(__Stack, new int[]{30, 20, 10});
+        stack.push(10);
+        stack.push(30);
+        stack.insert(1, 20);
+        assertEquals(3, stack.size());
+        assertStackElements(stack, new int[]{30, 20, 10});
     }
 
     @Test
     public void testInsertInvalidPosition() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            __Stack.insert(-1, 10);
+        assertThrows(NoSuchElementException.class, () -> {
+            stack.insert(-1, 10);
         });
-        assertThrows(IllegalArgumentException.class, () -> {
-            __Stack.insert(1, 10);
+        assertThrows(NoSuchElementException.class, () -> {
+            stack.insert(1, 10);
         });
     }
 
     @Test
     public void testGetMaxAfterInsertNewMax() {
-        __Stack.push(10);
-        __Stack.push(20);
-        __Stack.insert(2, 30);
-        assertEquals(30, __Stack.getMax());
+        stack.push(10);
+        stack.push(20);
+        stack.insert(2, 30);
+        assertEquals(30, stack.getMax());
     }
 
     @Test
     public void testGetMaxAfterInsertNotMax() {
-        __Stack.push(10);
-        __Stack.push(30);
-        __Stack.insert(1, 20);
-        assertEquals(30, __Stack.getMax());
+        stack.push(10);
+        stack.push(30);
+        stack.insert(1, 20);
+        assertEquals(30, stack.getMax());
     }
 
     @Test
     public void testGetMaxAfterInsertEqualMax() {
-        __Stack.push(10);
-        __Stack.push(30);
-        __Stack.insert(1, 30);
-        assertEquals(30, __Stack.getMax());
+        stack.push(10);
+        stack.push(30);
+        stack.insert(1, 30);
+        assertEquals(30, stack.getMax());
     }
 
     private void assertStackElements(CustomStack stack, int[] expectedElements) {

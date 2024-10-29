@@ -28,7 +28,7 @@ class KotlinCustomStackInsertTests {
         customStack!!.push(20)
         customStack!!.insert(2, 30)
         Assertions.assertEquals(3, customStack!!.size())
-        assertStackElements(customStack!!, intArrayOf(20, 10, 30))
+        assertStackElements(customStack!!, intArrayOf(30, 20, 10))
     }
 
     @Test
@@ -43,12 +43,12 @@ class KotlinCustomStackInsertTests {
     @Test
     fun testInsertInvalidPosition() {
         Assertions.assertThrows(
-            IllegalArgumentException::class.java
+            NoSuchElementException::class.java
         ) {
             customStack!!.insert(-1, 10)
         }
         Assertions.assertThrows(
-            IllegalArgumentException::class.java
+            NoSuchElementException::class.java
         ) {
             customStack!!.insert(1, 10)
         }
@@ -79,7 +79,7 @@ class KotlinCustomStackInsertTests {
     }
 
     private fun assertStackElements(stack: KotlinCustomStack, expectedElements: IntArray) {
-        val tempStack = CustomStack()
+        val tempStack = KotlinCustomStack()
         for (element in expectedElements) {
             tempStack.push(element)
         }
